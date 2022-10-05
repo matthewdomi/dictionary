@@ -11,35 +11,35 @@ export default NextAuth({
         CredentialsProvider({
             type: "credentials",
             async authorize(credentials) {
+
+                //connect to database
                 await db.connect();
-                try {
-                    let user = await User.findOne({ email: credentials.email });
-                    if (!user) {
-                        throw new Error("Invalid credentials");
-                    }
-                    let isMatch = await bcrypt.compare(
-                        credentials.password,
-                        user.password
-                    );
-                    if (!isMatch) {
-                        throw new Error("Invalid credentials");
-                    }
+
+                //find user
+                const user = await User.findOne({
+                    email: credentials.email,
+
+                })
+                //disconnect databse
+                await db.disconnect()
+
+                //check for user's password
+                if (user && bcrypt.compareSync(credentials.password, user.password)) {
                     return {
-                        id: user_id,
-                        email: user.email,
-                    }
-                } catch (error) {
-                    throw new Error("Invalid credentials");
-                } finally {
-                    await db.disconnect()
+                        _id: user._id,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email
+                    };
                 }
 
-
+                throw new Error("Invalid email or password")
 
             },
         })
     ],
     pages: {
-        signIn: "/auth/signIn"
+        signIn: "/auth/login",
+        error: "/auth/login",
     }
 })

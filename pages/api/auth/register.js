@@ -6,7 +6,7 @@ async function handler(req, res) {
     if (req.method !== "POST") {
         res.status(405).json({ error: "Only POST method is allowed" });
         return;
-    }
+    } 
     const { firstName, lastName, email, password } = req.body;
 
     await db.connect();
