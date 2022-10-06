@@ -64,7 +64,7 @@ const Login = () => {
                         />
                     </div>
                     <div className='items-center justify-center flex'>
-                        <button type='' className='bg-indigo-600  hover:text-blue-500 hover:oultine-blue-500 hover:bg-white rounded-lg px-3 py-1'>Login</button>
+                        <button type='submit' className='bg-indigo-600  hover:text-blue-500 hover:oultine-blue-500 hover:bg-white rounded-lg px-3 py-1'>Login</button>
                     </div>
 
                 </form>

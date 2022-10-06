@@ -3,12 +3,12 @@ import mongoose from "mongoose"
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        minLenght:[2, 'Must be more than two charaters'],
+        minLenght: [2, 'Must be more than two charaters'],
         required: true,
     },
     lastName: {
         type: String,
-        minLenght:[2, 'Must be more than two charaters'],
+        minLenght: [2, 'Must be more than two charaters'],
         required: true,
     },
     password: {
@@ -22,7 +22,11 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: true,
     },
-    favorite:[]
+    favorite: [
+        {
+            type: String,
+        }
+    ]
 },
 
 
