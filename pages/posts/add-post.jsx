@@ -3,6 +3,7 @@ import { AiOutlineComment } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import { FaSadTear } from 'react-icons/fa';
 import axios from 'axios';
+import Button from '../../components/button';
 
 const AddPost = () => {
   const [data, setData] = useState({
@@ -87,12 +88,7 @@ const AddPost = () => {
             />
           </div>
           <div className="items-center justify-center flex">
-            <button
-              type="submit"
-              className="bg-pink-500 text-white  hover:text-white hover:outline hover:outline-violet-500 hover:bg-violet-600 rounded-lg px-3 py-1"
-            >
-              Post Comment
-            </button>
+            <Button type="submit">Post Comment</Button>
           </div>
         </form>
       </div>

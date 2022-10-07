@@ -54,8 +54,11 @@ const ResultList = () => {
     <div className="container scrollbar-hide mx-auto p-4 max-w-2xl">
     
      {response && (
-        <div>
-          
+      
+        <div className="">
+          <div className="text-center -mt-3">
+            hjnodfk
+          </div>
           <div className="">
              <h3 className="text-2xl font-semibold mt-4 ">Definition </h3>
         <div className="bg-slate-100 p-2 rounded-lg">

@@ -1,14 +1,18 @@
-import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useSession, signOut } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
+
+import Link from 'next/link';
+
 import { SiConstruct3 } from 'react-icons/si';
 import { GiHamburgerMenu } from 'react-icons/gi';
 // import {IonClose , IonMenu} from '@ionic/react'
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsPersonCircle } from 'react-icons/bs';
-import { useSession, signOut } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { MdPersonOff } from 'react-icons/md';
 
 import Button from './button';
+
 const Navbar = () => {
   const Links = [
     { name: 'HOME', link: '/', icons: { SiConstruct3 } },
@@ -23,11 +27,10 @@ const Navbar = () => {
 
   useEffect(() => {
     if (status !== 'authenticated') {
-      router.push('/auth/login');
+      router.push('/');
     }
   }, [status]);
 
-  
   return (
     <div className="shadow-md w-screen fixed top-0 left-0 ">
       <div className="md:flex items-center justify-between bg-white py-2 px-7 mr-4">
@@ -62,18 +65,21 @@ const Navbar = () => {
             </li>
           ))}
 
-          
+          <div className="ml-3 -mt-3 p-2">
+            <Button>Get Started</Button>
+          </div>
+
           <div div className="md:ml-8 text-md md:my-0 my-7  ">
             {status === 'authenticated' ? (
               <button onClick={() => signOut({ callbackUrl: '/' })}>
                 <BsPersonCircle className="text-2xl text-blue-500 hover:bg-slate-100  hover:rounded-3xl hover:p-1 hover:duration-700 hover:text-blue-700" />
               </button>
             ) : (
-              <button>Login</button>
+              <button>
+                <MdPersonOff className="text-3xl  text-purple-700 hover:bg-slate-100  hover:rounded-3xl hover:p-1 hover:duration-700 hover:text-blue-700" />
+              </button>
             )}
           </div>
-
-          <Button>Get Started</Button>
         </ul>
       </div>
     </div>

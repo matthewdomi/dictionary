@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { getPosts } from '../../utils/getPosts';
+import Link from 'next/link';
 
 export async function getStaticProps() {
   const posts = await getPosts();
@@ -15,18 +16,13 @@ export async function getStaticProps() {
 const Posts = ({ posts }) => {
   return (
     <>
-      <div className="flex bg-yellow-400">
-        <div>
-          {posts.map((post) => (
-            <p key={post}>{post.title}</p>
-          ))}
-        </div>
-
-        <div>
-          {posts.map((post) => (
-            <p key={post}>{post.body}</p>
-          ))}
-        </div>
+      <div className="flex bg-yellow-400 p-2 space-x-3">
+        {posts?.map((post) => (
+          <p>
+            <Link href={`/posts/${post._id}`}>{post.title}</Link>
+          </p>
+        ))}
+        <h1>Posts</h1>
       </div>
     </>
   );
