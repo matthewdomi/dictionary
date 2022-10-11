@@ -29,7 +29,7 @@ const AddPost = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-white/5 justify-center items-center  ">
+    <div className="  ">
       <div className="md:w-1/3 bg-white  p-4 rounded-lg shadow-2xl outline outline-indigo-100 ">
         <h3 className="text-violet-600 text-2xl items-center justify-center flex  font-bold mb-4">
           Add Comment

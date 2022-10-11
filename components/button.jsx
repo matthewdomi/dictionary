@@ -7,7 +7,8 @@ const Button = (props) => {
                hover:text-white hover:duration-1000
                outline outline-violet-600
                  hover:bg-violet-600
-                 rounded-2xl hover:outline-none"
+                 rounded-2xl hover:outline-none
+                 active:bg-violet-700"
     >
       {props.children}
     </button>

@@ -59,7 +59,7 @@ export default function SignUp() {
 
         try {
             await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/register`, data)
-            router.push("/")
+            router.push("/login")
 
         } catch (error) {
             setError(error.message)
@@ -160,7 +160,7 @@ export default function SignUp() {
 
                     <p className='text-center mt-6 text-purple-600'>I am a member <button className='hover:animate-pulse underline  hover:underline-indigo-600 hover:underline'
                         href='/pages/signup.js'
-                    ><Link href="/login">
+                    ><Link href="/auth/login">
                             Sign In
                         </Link>
 

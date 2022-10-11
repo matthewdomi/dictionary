@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-const Cards = () => (
+export const Cards = () => (
   <div className="px-8 mt-10">
     <div className="mx-auto lg:w-3/5 lg:flex lg:flex-row lg:h-auto">
       <Image className="rounded-tr-md rounded-tl-md h-48 w-full lg:h-auto lg:w-2/5 lg:rounded-bl-md lg:rounded-tr-none" src="/images/12.jpg" height={400} width={600} alt="" />
@@ -25,4 +25,14 @@ const Cards = () => (
   </div>
 )
 
-export default Cards;
+
+
+export const CardContinue = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+
