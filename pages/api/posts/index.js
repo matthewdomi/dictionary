@@ -1,33 +1,38 @@
-import Post from '../../../models/post';
-import db from '../../../lib/dbConnect';
+import User from "../../../models/user"
 
-export default async function handler(req, res) {
+export async function handler(req, res) {
+    if (req.method === "POST") {
+        const { userId, word } = req.body
 
+        let user = await User.findById(userId)
+        if (!user) {
+            res.status(404).json({ message: "User Not Found" })
+            return;
+        }
 
-    if (req.method === 'GET') {
-        await db.connect()
-        const posts = await Post.find({});
-        await db.disconnect();
-        res.status(200).json({ posts });
+        if (user.favouriteWords.includes(word)) {
+            user = await User.findOneAndUpdate(userId, {
+                $pull: {
+                    favouriteWords: { word }
+                }
+            },
+                {
+                    new: true
+                }
+            )
+        } else {
+            user = await User.findOneAndUpdate(userId, {
+                $push: {
+                    favouriteWords: { word }
+                }
+            },
+                {
+                    new: true
+                }
+            )
+        }
 
-
-
-    } else if (req.method === 'POST') {
-        await db.connect()
-
-        const { title, body } = req.body
-
-        const post = await Post.create({
-            title,
-            body
-        });
-        await db.disconnect();
-
-        res.status(201).json({ post })
     } else {
-
-        res.status(405).json({ error: "Only GET and POST methods are supported!" });
+        res.status(405).json({ message: "Method not allowed. Only POST method is allowed." })
     }
 }
-
-

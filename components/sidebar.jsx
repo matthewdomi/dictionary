@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import { useState } from "react";
 // import classNames from 'classnames';
 import {
-  BsFillBookFill,
   BsBoxArrowLeft,
   BsFillJournalBookmarkFill,
   BsWhatsapp,
@@ -11,8 +10,7 @@ import {
 } from "react-icons/bs";
 import RiTeamFill from "react-icons/";
 import { MdOutlineFavoriteBorder, MdQuiz } from "react-icons/md";
-import { GrLogout } from "react-icons/gr";
-import { FaChalkboardTeacher, FaHome } from "react-icons/fa";
+import { FaChalkboardTeacher, FaHome, FaCommentDots } from "react-icons/fa";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { TbLogout } from "react-icons/tb";
@@ -27,7 +25,7 @@ const menuItems = [
     link: "/favorite",
   },
   { id: 3, label: "Tutorials", icon: FaChalkboardTeacher, link: "/tutorials" },
-  { id: 4, label: "Quiz", icon: MdQuiz, link: "/quiz" },
+  { id: 4, label: "Comment", icon: FaCommentDots, link: "/comment" },
   // { id: 5, label: "whatsapp", icon: BsWhatsapp, link: "/" },
   // { id: 6, label: "twitter", icon: BsTwitter, link: "/" },
   // { id: 7, label: "facebook", icon: BsFacebook, link: "/" },
@@ -43,7 +41,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
   return (
     <div
-      className={`fixed h-screen top-0 left-0 text-slate-500 shadow-lg py-5 ${
+      className={`fixed h-screen  top-0 left-0 text-slate-500 shadow-lg py-5 ${
         sidebarOpen ? "w-48" : "w-20"
       } duration-300`}
     >

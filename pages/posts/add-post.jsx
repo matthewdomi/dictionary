@@ -3,7 +3,6 @@ import { AiOutlineComment } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import { FaSadTear } from 'react-icons/fa';
 import axios from 'axios';
-import Button from '../../components/button';
 
 const AddPost = () => {
   const [data, setData] = useState({
@@ -29,8 +28,8 @@ const AddPost = () => {
   };
 
   return (
-    <div className="  ">
-      <div className="md:w-1/3 bg-white  p-4 rounded-lg shadow-2xl outline outline-indigo-100 ">
+    <div className=" flex bg-white/5 justify-center items-center  ">
+      <div className=" bg-white w-full h-screen m-96 mt-7 p-4 rounded-lg shadow-2xl outline outline-indigo-100 ">
         <h3 className="text-violet-600 text-2xl items-center justify-center flex  font-bold mb-4">
           Add Comment
           <span className="mx-2">
@@ -56,7 +55,7 @@ const AddPost = () => {
         <form
           action=""
           onSubmit={handleSubmit}
-          className="flex flex-col space-y-4"
+          className="flex flex-col space-y-4 "
         >
           <div className="flex flex-col space-y-1 mt-5">
             <label htmlFor="title" className="font-semibold text-violet-600">
@@ -88,7 +87,12 @@ const AddPost = () => {
             />
           </div>
           <div className="items-center justify-center flex">
-            <Button type="submit">Post Comment</Button>
+            <button
+              type="submit"
+              className="bg-pink-500 text-white  hover:text-white hover:outline hover:outline-violet-500 hover:bg-violet-600 rounded-lg px-3 py-1"
+            >
+              Post Comment
+            </button>
           </div>
         </form>
       </div>

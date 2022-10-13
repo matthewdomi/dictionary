@@ -1,5 +1,5 @@
 .container {
-  /* padding: 0 2rem; */
+  padding: 0 2rem;
 }
 
 .main {
@@ -100,7 +100,7 @@
 .card p {
   margin: 0;
   font-size: 1.25rem;
-  /* line-height: 1.5; */
+  line-height: 1.5;
 }
 
 .logo {

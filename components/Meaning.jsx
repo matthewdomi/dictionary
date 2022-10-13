@@ -33,7 +33,7 @@ const Meaning = ({ meaning: { item, key } }) => {
                 {meaning.synonyms.map((synonym, idx) => (
                   <span
                     key={idx}
-                    className="bg-blueGreen px-2.5 py-0.5 tracking-wider rounded-full text-white text-sm mb-2 font-semibold cursor-pointer"
+                    className="bg-purple-600 px-2.5 py-0.5 tracking-wider rounded-full text-white text-sm mb-2 font-semibold cursor-pointer"
                   >
                     {synonym}
                   </span>
@@ -50,7 +50,7 @@ const Meaning = ({ meaning: { item, key } }) => {
                 {meaning.antonyms.map((antonym, idx) => (
                   <span
                     key={idx}
-                    className="bg-blueGreen px-2.5 py-0.5 tracking-wider rounded-full text-white text-sm mb-2 font-semibold cursor-pointer"
+                    className="bg-purple-600 px-2.5 py-0.5 tracking-wider rounded-full text-white text-sm mb-2 font-semibold cursor-pointer"
                   >
                     {antonym}
                   </span>

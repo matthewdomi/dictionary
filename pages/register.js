@@ -4,6 +4,8 @@ import newbg1 from "../public/images/newbg1.jpg";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import { useState } from "react";
+import axios from "axios"
+import { useRouter } from "next/router";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -11,17 +13,20 @@ const Signup = () => {
     lastName: "",
     email: "",
     password: "",
+    confirmPassword: ""
   });
   const [error, setError] = useState("");
+  const router = useRouter()
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
     try {
+      await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/register`, data)
+      router.push("/login")
     } catch (error) {
       setError(error.message);
     }
@@ -84,11 +89,14 @@ const Signup = () => {
             </form> */}
             <form className=" mt- " onSubmit={handleSubmit}>
               <h2 className="text-4xl font-bold text-center mb-8">Register</h2>
+              {error && <span className="text-center text-sm text-red-500">{error}</span>}
               <div className="flex flex-col py-4">
                 <input
                   className=" w-[120px] outline-none font-thin hover:shadow-inner rounded-full px-2"
                   type="text"
+                  name="firstName"
                   placeholder="firstname"
+                  value={data.firstName}
                   onChange={handleChange}
                 />
               </div>
@@ -97,6 +105,8 @@ const Signup = () => {
                   className=" p-2 outline-none "
                   type="text"
                   placeholder="lastname"
+                  value={data.lastName}
+                  name="lastName"
                   onChange={handleChange}
                 />
               </div>
@@ -104,15 +114,19 @@ const Signup = () => {
                 <input
                   className=" p-2 outline-none "
                   type="email"
+                  name="email"
+                  value={data.email}
                   placeholder="email"
                   onChange={handleChange}
                 />
               </div>
               <div>
                 <input
-                  className=" p-2 outline-none "
+                  className="p-2 outline-none "
                   type="password"
+                  name="password"
                   placeholder="password"
+                  value={data.password}
                   onChange={handleChange}
                 />
               </div>
@@ -120,6 +134,8 @@ const Signup = () => {
                 <input
                   className=" p-2 outline-none "
                   type="password"
+                  name="confirmPassword"
+                  value={data.confirmPassword}
                   placeholder="confirm password"
                   onChange={handleChange}
                 />

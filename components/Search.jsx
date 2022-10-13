@@ -1,25 +1,32 @@
-import React, { FormEvent, useState } from "react";
+import axios from 'axios';
+import React, { FormEvent, useState } from 'react';
 
-const Search = () => {
-  const [searchWord, setSearchWord] = useState("");
-  const [word, setWord] = useState(null);
+const Search = ({ setWord }) => {
+  // const [searchWord, setSearchWord] = useState("");
+  const [inputWord, setInputWord] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(searchWord);
+    // setSearchWord(word)
+
+    const result = await fetch(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${inputWord}`
+    );
+    const data = await result.json();
+    setWord(data);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="max-w-sm mx-auto border mt-10 border-blue-400 px-2 py-1 rounded-full flex">
+      <div className="max-w-sm mx-auto border mt-10 border-pink-500 px-2 py-1 rounded-full flex">
         <input
-          className="w-full outline-none px-2 text-gray-700 text-xl"
+          className="w-full outline-none px-2 text-gray-700  text-xl"
           type="search"
           name="search"
-          onChange={(e) => setSearchWord(e.target.value)}
+          onChange={(e) => setInputWord(e.target.value)}
         />
         <button
-          className="bg-blueGreen text-offWhite font-bold py-1 px-4 rounded-full"
+          className="bg-pink-500  text-white font-bold py-1 px-4 rounded-full"
           type="submit"
         >
           Search
